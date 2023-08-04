@@ -7,6 +7,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@remix-run/css-bundle": "^1.19.2",
     "@remix-run/node": "^1.19.2",
@@ -15,9 +18,11 @@
     "@vercel/node": "^2.10.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
     "isbot": "^3.6.8",
     "lucide-react": "^0.263.1",
     "react": "^18.2.0",
+    "react-day-picker": "^8.8.0",
     "react-dom": "^18.2.0",
     "source-map-support": "^0.5.21",
     "tailwind-merge": "^1.14.0",
