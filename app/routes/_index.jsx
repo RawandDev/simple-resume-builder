@@ -8,6 +8,7 @@ import DatePicker from "../components/DatePicker/DatePicker";
 import { PlusCircle } from "lucide-react";
 import { addMonths, format } from "date-fns";
 import Projects from "../components/Sections/Projects";
+import Socials from "../components/Sections/Socials";
 
 export const meta = () => {
   return [
@@ -27,6 +28,12 @@ export default function Index() {
         "A side project to help people create their CV with ease. \n - Agile methodology \n- Used Remix + Shadcn ui",
       stDate: format(new Date(), "PPP"),
       enDate: format(addMonths(new Date(), "3"), "PPP"),
+    },
+  ]);
+  const [socials, setSocials] = useState([
+    {
+      socialName: "GitHub",
+      socialLink: "https://github.com/RawandDev",
     },
   ]);
 
@@ -114,17 +121,7 @@ export default function Index() {
           setProjects={setProjects}
         />
         <Separator />
-        <section className="flex flex-col gap-3">
-          <h1 className="font-bold text-xl">Social Links</h1>
-          <div className="grid w-full gap-1">
-            <Input
-              type="text"
-              placeholder="https://github.com/RawandDev"
-              id="social"
-              name="social"
-            />
-          </div>
-        </section>
+        <Socials socials={socials} setSocials={setSocials} />
         <Separator />
         <section className="flex flex-col gap-3">
           <h1 className="font-bold text-xl">Skills</h1>
