@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -6,6 +6,8 @@ import { Separator } from "~/components/ui/separator";
 import { Textarea } from "~/components/ui/textarea";
 import DatePicker from "../components/DatePicker/DatePicker";
 import { PlusCircle } from "lucide-react";
+import { addMonths, format } from "date-fns";
+import Projects from "../components/Sections/Projects";
 
 export const meta = () => {
   return [
@@ -18,22 +20,18 @@ export default function Index() {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
+  const [projects, setProjects] = useState([
+    {
+      projectTitle: "Hello World",
+      projectDescription:
+        "A side project to help people create their CV with ease. \n - Agile methodology \n- Used Remix + Shadcn ui",
+      stDate: format(new Date(), "PPP"),
+      enDate: format(addMonths(new Date(), "3"), "PPP"),
+    },
+  ]);
+
   const [userInfo, setUserInfo] = useState();
 
-  const [projects, setProjects] = useState([]);
-
-  // Function to add a new project to the list
-  const addProject = () => {
-    setProjects((prevProjects) => [
-      ...prevProjects,
-      {
-        projectTitle: "",
-        startDate: "",
-        endDate: "",
-        projectDescription: "",
-      },
-    ]);
-  };
   function handleChangeInput(e) {
     console.log(e.target.value);
     setUserInfo((prev) => ({
@@ -42,7 +40,7 @@ export default function Index() {
     }));
   }
 
-  console.log(userInfo, startDate, endDate, "pr", projects);
+  console.log(userInfo, startDate, endDate, "pr");
 
   return (
     <div className="flex gap-20 p-5 relative">
@@ -107,41 +105,14 @@ export default function Index() {
           </div>
         </section>
         <Separator />
-        <section className="flex flex-col gap-3">
-          <h1 className="font-bold text-xl">Projects</h1>
-          <div className="grid w-full gap-1">
-            <Label htmlFor="projectTitle">Project Title</Label>
-            <Input
-              type="projectTitle"
-              placeholder="Project Title"
-              id="projectTitle"
-              name="projectTitle"
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-          <div className="flex gap-5 items-center">
-            <DatePicker
-              date={startDate}
-              setDate={setStartDate}
-              label="Start Date"
-            />
-            -
-            <DatePicker date={endDate} setDate={setEndDate} label="End Date" />
-          </div>
-          <div className="grid w-full gap-1.5">
-            <Label htmlFor="bio">Brief Explanation</Label>
-            <Textarea
-              placeholder="A side project to help people create their CV with ease.
-              - Agile methodology
-              - Used Remix + Shadcn ui"
-              id="projectDescription"
-              name="projectDescription"
-            />
-          </div>
-          <Button variant="outline" className="w-16" onClick={addProject}>
-            <PlusCircle className="h-4 w-4" />
-          </Button>{" "}
-        </section>
+        <Projects
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          projects={projects}
+          setProjects={setProjects}
+        />
         <Separator />
         <section className="flex flex-col gap-3">
           <h1 className="font-bold text-xl">Social Links</h1>
@@ -158,12 +129,7 @@ export default function Index() {
         <section className="flex flex-col gap-3">
           <h1 className="font-bold text-xl">Skills</h1>
           <div className="grid w-full gap-1">
-            <Input
-              type="text"
-              placeholder="Remix"
-              id="skill"
-              name="skill"
-            />
+            <Input type="text" placeholder="Remix" id="skill" name="skill" />
           </div>
         </section>
       </div>
