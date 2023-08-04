@@ -2,7 +2,6 @@ import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 
 import { PlusCircle, TrashIcon } from "lucide-react";
-import { useState } from "react";
 function Socials({ socials, setSocials }) {
   const handleAddSocial = () => {
     setSocials((prevSocials) => [

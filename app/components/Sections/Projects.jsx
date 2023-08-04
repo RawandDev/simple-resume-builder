@@ -57,14 +57,14 @@ function Projects({
             <div className="grid w-full gap-1 transition-all ease-in duration-1000">
               <Label className="flex justify-between items-end" htmlFor={index}>
                 Project Title{" "}
-                <Button
+                {/* <Button
                   variant="destructive"
                   className="w-6 h-6 opacity-100"
                   size="icon"
                   onClick={() => handleDeleteProject(index)}
                 >
                   <TrashIcon className="h-4 w-4" />
-                </Button>
+                </Button> */}
               </Label>
               <Input
                 type="text"
@@ -97,6 +97,14 @@ function Projects({
                 onChange={(e) => handleChangeInput(e, index)}
               />
             </div>
+            <Button
+              variant="destructive"
+              className="w-6 h-6 ms-auto"
+              size="icon"
+              onClick={() => handleDeleteProject(index)}
+            >
+              <TrashIcon className="h-4 w-4" />
+            </Button>
           </Fragment>
         );
       })}

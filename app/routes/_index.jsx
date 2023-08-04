@@ -9,6 +9,7 @@ import { PlusCircle } from "lucide-react";
 import { addMonths, format } from "date-fns";
 import Projects from "../components/Sections/Projects";
 import Socials from "../components/Sections/Socials";
+import Skills from "../components/Sections/Skills";
 
 export const meta = () => {
   return [
@@ -20,7 +21,6 @@ export const meta = () => {
 export default function Index() {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-
   const [projects, setProjects] = useState([
     {
       projectTitle: "Hello World",
@@ -36,6 +36,7 @@ export default function Index() {
       socialLink: "https://github.com/RawandDev",
     },
   ]);
+  const [skills, setSkills] = useState(["Remix"]);
 
   const [userInfo, setUserInfo] = useState();
 
@@ -123,12 +124,7 @@ export default function Index() {
         <Separator />
         <Socials socials={socials} setSocials={setSocials} />
         <Separator />
-        <section className="flex flex-col gap-3">
-          <h1 className="font-bold text-xl">Skills</h1>
-          <div className="grid w-full gap-1">
-            <Input type="text" placeholder="Remix" id="skill" name="skill" />
-          </div>
-        </section>
+        <Skills skills={skills} setSkills={setSkills} />
       </div>
       <section className="fixed left-2/3">Preview Print</section>
     </div>
