@@ -52,3 +52,6 @@ export const MAP_STATE_TO_TYPE = {
     skills: [""],
   },
 };
+
+export const INITIAL_TEMPLATE = "INITIAL_TEMPLATE";
+export const MODERN_TEMPLATE = "MODERN_TEMPLATE";
