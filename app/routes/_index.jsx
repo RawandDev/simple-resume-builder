@@ -7,6 +7,7 @@ import Socials from "../components/Sections/Socials";
 import Skills from "../components/Sections/Skills";
 import UserDetails from "../components/Sections/UserDetails";
 import InitialTemplate from "../components/Templates/InitialTemplate";
+import { INITIAL, MAP_STATE_TO_TYPE, RESET } from "../constants/general";
 
 export const meta = () => {
   return [
@@ -18,29 +19,12 @@ export const meta = () => {
 export default function Index() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [userDetails, setUserDetails] = useState({
-    firstName: "Rawand",
-    lastName: "Kamal",
-    email: "hello@example.com",
-    jobTitle: "Frontend web developer",
-    bio: "A passionate frontend developer. I like to build cutting edge application with latest technoglogies. I have started to programming in June 2020 and loving it.",
-  });
-  const [projects, setProjects] = useState([
-    {
-      projectTitle: "Hello World",
-      projectDescription:
-        "A side project to help people create their\nCV with ease. \n - Agile methodology \n - Used Remix + Shadcn ui",
-      stDate: null,
-      enDate: null,
-    },
-  ]);
-  const [socials, setSocials] = useState([
-    {
-      socialName: "GitHub",
-      socialLink: "https://github.com/RawandDev",
-    },
-  ]);
-  const [skills, setSkills] = useState(["Remix"]);
+  const [userDetails, setUserDetails] = useState(
+    MAP_STATE_TO_TYPE[INITIAL].userDetails
+  );
+  const [projects, setProjects] = useState(MAP_STATE_TO_TYPE[INITIAL].projects);
+  const [socials, setSocials] = useState(MAP_STATE_TO_TYPE[INITIAL].socials);
+  const [skills, setSkills] = useState(MAP_STATE_TO_TYPE[INITIAL].skills);
 
   console.log("start", startDate, endDate);
 
@@ -67,31 +51,10 @@ export default function Index() {
         <Button
           variant="outline"
           onClick={() => {
-            setUserDetails({
-              firstName: "",
-              lastName: "",
-              email: "",
-              jobTitle: "",
-              bio: "",
-            });
-
-            setProjects([
-              {
-                projectTitle: "",
-                projectDescription: "",
-                stDate: null,
-                enDate: null,
-              },
-            ]);
-
-            setSocials([
-              {
-                socialName: "",
-                socialLink: "",
-              },
-            ]);
-
-            setSkills([""]);
+            setUserDetails(MAP_STATE_TO_TYPE[RESET].userDetails);
+            setProjects(MAP_STATE_TO_TYPE[RESET].projects);
+            setSocials(MAP_STATE_TO_TYPE[RESET].socials);
+            setSkills(MAP_STATE_TO_TYPE[RESET].skills);
           }}
         >
           Reset Fields
