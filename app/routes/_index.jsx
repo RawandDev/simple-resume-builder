@@ -22,8 +22,8 @@ import Education from "../components/Sections/Education";
 
 export const meta = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Simple Resume Builder" },
+    { name: "description", content: "Elegant way of creating your resume." },
   ];
 };
 
