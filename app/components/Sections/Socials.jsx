@@ -38,7 +38,6 @@ function Socials({ socials, setSocials }) {
     });
   };
 
-  console.log("socials", socials);
   return (
     <section className="flex flex-col gap-3">
       <AccordionItem value="item-2">

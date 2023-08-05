@@ -30,7 +30,6 @@ function Skills({ skills, setSkills }) {
     });
   };
 
-  console.log("skills", skills);
   return (
     <section className="flex flex-col gap-3">
       <AccordionItem value="item-3">
@@ -39,7 +38,6 @@ function Skills({ skills, setSkills }) {
         </AccordionTrigger>
         <AccordionContent className="p-1">
           {skills.map((skill, index) => {
-            console.log("skiii", skill);
             return (
               <div key={index} className="grid w-full gap-1">
                 <Input

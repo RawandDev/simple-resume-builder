@@ -4,14 +4,12 @@ import { Textarea } from "~/components/ui/textarea";
 
 function UserDetails({ userDetails, setUserDetails }) {
   function handleChangeInput(e) {
-    console.log(e.target.value);
     setUserDetails((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   }
 
-  console.log("userDe", userDetails);
   return (
     <section className="flex gap-4 flex-col">
       <div className="flex gap-5">

@@ -15,7 +15,7 @@ function DatePicker({ date, label, setProjects, index }) {
 
   return (
     <Popover>
-      <PopoverTrigger asChild onChange={(e) => console.log("eeeeeeeeeee", e)}>
+      <PopoverTrigger asChild>
         <Button
           variant="outline"
           className={cn(

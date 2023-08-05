@@ -9,7 +9,6 @@ function InitialTemplate({
   socials,
   educations,
 }) {
-  console.log("eduuuu", educations);
   return (
     <div className="p-10 flex gap-10">
       <section className="flex flex-col gap-y-20 flex-1 flex-wrap">

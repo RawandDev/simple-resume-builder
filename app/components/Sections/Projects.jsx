@@ -45,7 +45,6 @@ function Projects({ projects, setProjects }) {
     });
   };
 
-  console.log("pr", projects);
   return (
     <section className="flex flex-col gap-3">
       <AccordionItem value="item-1">
