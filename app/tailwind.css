@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @media print {
+  #container {
+    size: a4;
+  }
+}
+
+@media screen {
+  #container {
+    size: unset;
+    max-width: 210mm;
+  }
+} */

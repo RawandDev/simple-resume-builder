@@ -1,15 +1,12 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
 import { Separator } from "~/components/ui/separator";
-import { Textarea } from "~/components/ui/textarea";
-import DatePicker from "../components/DatePicker/DatePicker";
-import { PlusCircle } from "lucide-react";
-import { addMonths, format } from "date-fns";
+import { ListRestartIcon } from "lucide-react";
 import Projects from "../components/Sections/Projects";
 import Socials from "../components/Sections/Socials";
 import Skills from "../components/Sections/Skills";
+import UserDetails from "../components/Sections/UserDetails";
+import InitialTemplate from "../components/Templates/InitialTemplate";
 
 export const meta = () => {
   return [
@@ -19,15 +16,22 @@ export const meta = () => {
 };
 
 export default function Index() {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [userDetails, setUserDetails] = useState({
+    firstName: "Rawand",
+    lastName: "Kamal",
+    email: "hello@example.com",
+    jobTitle: "Frontend web developer",
+    bio: "A passionate frontend developer. I like to build cutting edge application with latest technoglogies. I have started to programming in June 2020 and loving it.",
+  });
   const [projects, setProjects] = useState([
     {
       projectTitle: "Hello World",
       projectDescription:
-        "A side project to help people create their CV with ease. \n - Agile methodology \n- Used Remix + Shadcn ui",
-      stDate: format(new Date(), "PPP"),
-      enDate: format(addMonths(new Date(), "3"), "PPP"),
+        "A side project to help people create their\nCV with ease. \n - Agile methodology \n - Used Remix + Shadcn ui",
+      stDate: null,
+      enDate: null,
     },
   ]);
   const [socials, setSocials] = useState([
@@ -38,80 +42,15 @@ export default function Index() {
   ]);
   const [skills, setSkills] = useState(["Remix"]);
 
-  const [userInfo, setUserInfo] = useState();
-
-  function handleChangeInput(e) {
-    console.log(e.target.value);
-    setUserInfo((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  }
-
-  console.log(userInfo, startDate, endDate, "pr");
+  console.log("start", startDate, endDate);
 
   return (
     <div className="flex gap-20 p-5 relative">
       <div className="w-2/5 flex flex-col gap-10">
-        <section className="flex gap-4 flex-col">
-          <div className="flex gap-5">
-            <div className="flex flex-col gap-1 w-full">
-              <Label htmlFor="firstName">First Name</Label>
-              <Input
-                type="text"
-                placeholder="First Name"
-                name="firstName"
-                id="firstName"
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-            <div className="flex flex-col gap-1 w-full">
-              <Label htmlFor="lastName">Last Name</Label>
-              <Input
-                type="text"
-                placeholder="Last Name"
-                name="lastName"
-                id="lastName"
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="grid w-full gap-1">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                type="email"
-                placeholder="Email"
-                id="email"
-                name="email"
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="grid w-full gap-1">
-              <Label htmlFor="jobTitle">Job Title</Label>
-              <Input
-                type="text"
-                placeholder="Job Title"
-                id="jobTitle"
-                name="jobTitle"
-              />
-            </div>
-          </div>
-        </section>
-        <Separator />
-        <section>
-          <h1 className="font-bold text-xl mb-2">Description</h1>
-          <div className="grid w-full gap-1.5">
-            <Label htmlFor="bio">Write your bio</Label>
-            <Textarea
-              placeholder="Hmm, thinking deep? Write about yourself mate!"
-              id="bio"
-              name="bio"
-            />
-          </div>
-        </section>
+        <UserDetails
+          userDetails={userDetails}
+          setUserDetails={setUserDetails}
+        />
         <Separator />
         <Projects
           startDate={startDate}
@@ -125,8 +64,53 @@ export default function Index() {
         <Socials socials={socials} setSocials={setSocials} />
         <Separator />
         <Skills skills={skills} setSkills={setSkills} />
+        <Button
+          variant="outline"
+          onClick={() => {
+            setUserDetails({
+              firstName: "",
+              lastName: "",
+              email: "",
+              jobTitle: "",
+              bio: "",
+            });
+
+            setProjects([
+              {
+                projectTitle: "",
+                projectDescription: "",
+                stDate: null,
+                enDate: null,
+              },
+            ]);
+
+            setSocials([
+              {
+                socialName: "",
+                socialLink: "",
+              },
+            ]);
+
+            setSkills([""]);
+          }}
+        >
+          Reset Fields
+          <ListRestartIcon className="mr-2 h-4 w-4" />
+        </Button>
       </div>
-      <section className="fixed left-2/3">Preview Print</section>
+      <section className="fixed left-2/4">
+        <div
+          data-size="A4"
+          className="p-10 flex gap-10 border-black border-2 print:border-none h-[267mm]"
+          id="container"
+        >
+          <InitialTemplate
+            userDetails={userDetails}
+            projects={projects}
+            skills={skills}
+          />
+        </div>
+      </section>
     </div>
   );
 }

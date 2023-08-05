@@ -57,14 +57,6 @@ function Projects({
             <div className="grid w-full gap-1 transition-all ease-in duration-1000">
               <Label className="flex justify-between items-end" htmlFor={index}>
                 Project Title{" "}
-                {/* <Button
-                  variant="destructive"
-                  className="w-6 h-6 opacity-100"
-                  size="icon"
-                  onClick={() => handleDeleteProject(index)}
-                >
-                  <TrashIcon className="h-4 w-4" />
-                </Button> */}
               </Label>
               <Input
                 type="text"
@@ -77,24 +69,27 @@ function Projects({
             </div>
             <div className="flex gap-5 items-center">
               <DatePicker
-                date={startDate}
-                setDate={setStartDate}
+                date={project.stDate}
                 label="Start Date"
+                setProjects={setProjects}
+                index={index}
               />
               -
               <DatePicker
-                date={endDate}
-                setDate={setEndDate}
+                date={project.enDate}
+                setProjects={setProjects}
                 label="End Date"
+                index={index}
               />
             </div>
             <div className="grid w-full gap-1.5">
-              <Label htmlFor="bio">Brief Explanation</Label>
+              <Label htmlFor={`bio-${index}`}>Brief Explanation</Label>
               <Textarea
                 placeholder={project.projectDescription}
-                id="projectDescription"
+                id={`bio-${index}`}
                 name="projectDescription"
                 onChange={(e) => handleChangeInput(e, index)}
+                className="h-28"
               />
             </div>
             <Button

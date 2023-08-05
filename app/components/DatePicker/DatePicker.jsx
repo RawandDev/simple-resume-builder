@@ -8,11 +8,14 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "../../utils";
 import { Button } from "~/components/ui/button";
+import { useRef } from "react";
 
-function DatePicker({ date, setDate, label }) {
+function DatePicker({ date, label, setProjects, index }) {
+  const inputRef = useRef(null);
+
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild onChange={(e) => console.log("eeeeeeeeeee", e)}>
         <Button
           variant="outline"
           className={cn(
@@ -20,6 +23,13 @@ function DatePicker({ date, setDate, label }) {
             !date && "text-muted-foreground"
           )}
         >
+          <input
+            ref={inputRef}
+            type="hidden"
+            name={label === "Start Date" ? "stDate" : "enDate"}
+            id={label === "Start Date" ? "stDate" : "enDate"}
+            value={date || ""}
+          />
           <CalendarIcon className="mr-2 h-4 w-4" />
           {date ? format(date, "PPP") : <span>{label}</span>}
         </Button>
@@ -28,7 +38,16 @@ function DatePicker({ date, setDate, label }) {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={(e) => {
+            setProjects((prevProjects) => {
+              const updatedProjects = [...prevProjects];
+              updatedProjects[index] = {
+                ...updatedProjects[index],
+                [inputRef.current?.name]: e,
+              };
+              return updatedProjects;
+            });
+          }}
           initialFocus
         />
       </PopoverContent>
