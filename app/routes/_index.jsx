@@ -12,6 +12,7 @@ import InitialTemplate from "../components/Templates/InitialTemplate";
 import { INITIAL, MAP_STATE_TO_TYPE, RESET } from "../constants/general";
 import { useReactToPrint } from "react-to-print";
 import ModernTemplate from "../components/Templates/ModernTemplate";
+import { Accordion } from "~/components/ui/accordion";
 
 export const meta = () => {
   return [
@@ -21,8 +22,6 @@ export const meta = () => {
 };
 
 export default function Index() {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
   const [userDetails, setUserDetails] = useState(
     MAP_STATE_TO_TYPE[INITIAL].userDetails
   );
@@ -33,8 +32,6 @@ export default function Index() {
 
   const { toast } = useToast();
 
-  console.log("start", startDate, endDate);
-
   const handlePrint = useReactToPrint({
     content: () => templateRef.current,
     documentTitle: `${userDetails.firstName} ${userDetails.lastName} - CV`,
@@ -43,23 +40,18 @@ export default function Index() {
   return (
     <div className="flex gap-20 p-5 relative">
       <div className="w-2/5 flex flex-col gap-10 print:hidden">
-        <UserDetails
-          userDetails={userDetails}
-          setUserDetails={setUserDetails}
-        />
-        <Separator />
-        <Projects
-          startDate={startDate}
-          endDate={endDate}
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
-          projects={projects}
-          setProjects={setProjects}
-        />
-        <Separator />
-        <Socials socials={socials} setSocials={setSocials} />
-        <Separator />
-        <Skills skills={skills} setSkills={setSkills} />
+        <Accordion type="multiple" className="w-full">
+          <UserDetails
+            userDetails={userDetails}
+            setUserDetails={setUserDetails}
+          />
+          <Separator />
+          <Projects projects={projects} setProjects={setProjects} />
+          <Separator />
+          <Socials socials={socials} setSocials={setSocials} />
+          <Separator />
+          <Skills skills={skills} setSkills={setSkills} />
+        </Accordion>
         <Button
           variant="outline"
           onClick={() => {
@@ -71,7 +63,7 @@ export default function Index() {
             toast({
               title: "Fields have been cleared ✔",
               description:
-                "If you want to undo the changes simply click on the `Undo` button.",
+                "If you want to undo the changes to initial state simply click on the `Undo` button.",
               action: (
                 <ToastAction
                   altText="Undo action"
