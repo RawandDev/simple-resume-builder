@@ -1,7 +1,15 @@
 import { Link } from "@remix-run/react";
 import { format } from "date-fns";
+import { DUMMY_START_DATE } from "../../constants/general";
 
-function InitialTemplate({ userDetails, projects, skills, socials }) {
+function InitialTemplate({
+  userDetails,
+  projects,
+  skills,
+  socials,
+  educations,
+}) {
+  console.log("eduuuu", educations);
   return (
     <div className="p-10 flex gap-10">
       <section className="flex flex-col gap-y-20 flex-1 flex-wrap">
@@ -24,14 +32,11 @@ function InitialTemplate({ userDetails, projects, skills, socials }) {
               {projects?.map((project, index) => (
                 <div key={index} className="group relative">
                   <header className="flex flex-col">
-                    <div
-                      className={`opacity-40 ${
-                        !project.stDate ? "hidden" : "block"
-                      }`}
-                    >
+                    <div className="opacity-40">
                       <span>
-                        {project.stDate &&
-                          format(project.stDate, "MMM do, yyyy")}
+                        {project.stDate
+                          ? format(project.stDate, "MMM do, yyyy")
+                          : format(DUMMY_START_DATE, "MMM do, yyyy")}
                       </span>{" "}
                       -{" "}
                       <span>
@@ -78,6 +83,28 @@ function InitialTemplate({ userDetails, projects, skills, socials }) {
           <p className="uppercase opacity-75 text-lg font-semibold">
             Education
           </p>
+          <div className="flex flex-col gap-5">
+            {educations?.map((education, index) => (
+              <div key={index} className="group relative">
+                <header className="flex flex-col">
+                  <p className="font-semibold">{education.educationTitle}</p>{" "}
+                  <div className="opacity-40">
+                    <span>
+                      {education.stDate
+                        ? format(education.stDate, "MMM do, yyyy")
+                        : format(DUMMY_START_DATE, "MMM do, yyyy")}
+                    </span>{" "}
+                    -{" "}
+                    <span>
+                      {education.enDate
+                        ? format(education.enDate, "MMM do, yyyy")
+                        : "Present"}
+                    </span>
+                  </div>
+                </header>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

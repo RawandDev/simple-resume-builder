@@ -18,6 +18,7 @@ import { useReactToPrint } from "react-to-print";
 import { Accordion } from "~/components/ui/accordion";
 import TemplateRenderer from "../components/TemplateRender/TemplateRender";
 import TemplatePicker from "../components/TemplatePicker/TemplatePicker";
+import Education from "../components/Sections/Education";
 
 export const meta = () => {
   return [
@@ -33,6 +34,9 @@ export default function Index() {
   const [projects, setProjects] = useState(MAP_STATE_TO_TYPE[INITIAL].projects);
   const [socials, setSocials] = useState(MAP_STATE_TO_TYPE[INITIAL].socials);
   const [skills, setSkills] = useState(MAP_STATE_TO_TYPE[INITIAL].skills);
+  const [educations, setEducations] = useState(
+    MAP_STATE_TO_TYPE[INITIAL].education
+  );
   const templateRef = useRef();
   const [selectedTemplate, setSelectedTemplate] = useState(INITIAL_TEMPLATE);
 
@@ -44,7 +48,7 @@ export default function Index() {
   });
 
   return (
-    <div className="flex gap-20 p-5 relative">
+    <div className="flex gap-20 p-5 relative justify-center">
       <div className="w-2/5 flex flex-col gap-10 print:hidden">
         <Accordion type="multiple" className="w-full">
           <UserDetails
@@ -57,6 +61,9 @@ export default function Index() {
           <Socials socials={socials} setSocials={setSocials} />
           <Separator />
           <Skills skills={skills} setSkills={setSkills} />
+          <Separator />
+          <Education educations={educations} setEducations={setEducations} />
+          <Separator />
         </Accordion>
         <div className="flex gap-2">
           <Button
@@ -102,10 +109,7 @@ export default function Index() {
         </div>
         <TemplatePicker setSelectedTemplate={setSelectedTemplate} />
       </div>
-      <section
-        className="print:left-0 print:w-full"
-        ref={templateRef}
-      >
+      <section className="print:left-0 print:w-full" ref={templateRef}>
         <div
           className="border-black border-2 print:border-none h-[267mm]"
           id="container"
@@ -116,6 +120,7 @@ export default function Index() {
             projects={projects}
             skills={skills}
             socials={socials}
+            educations={educations}
           />
         </div>
       </section>

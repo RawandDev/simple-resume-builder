@@ -12,6 +12,7 @@ function TemplateRenderer({
   projects,
   skills,
   socials,
+  educations,
 }) {
   const TemplateComponent = MAP_TEMPLATES_TO_JSX[selectedTemplate];
 
@@ -23,6 +24,7 @@ function TemplateRenderer({
           projects={projects}
           skills={skills}
           socials={socials}
+          educations={educations}
         />
       )}
     </div>

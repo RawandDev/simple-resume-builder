@@ -1,7 +1,14 @@
 import { Link } from "@remix-run/react";
 import { format } from "date-fns";
+import { DUMMY_START_DATE } from "../../constants/general";
 
-function ModernTemplate({ userDetails, projects, skills, socials }) {
+function ModernTemplate({
+  userDetails,
+  projects,
+  skills,
+  socials,
+  educations,
+}) {
   return (
     <>
       <header className="flex bg-emerald-200 p-10 gap-20">
@@ -29,8 +36,8 @@ function ModernTemplate({ userDetails, projects, skills, socials }) {
           ))}
         </div>
       </header>
-      <section className="p-10 flex gap-10">
-        <div className="flex-1">
+      <div className="p-10 flex gap-10">
+        <section className="flex-1">
           <p className="text-xl font-bold text-emerald-500 mb-4">
             Work Experience
           </p>
@@ -59,14 +66,41 @@ function ModernTemplate({ userDetails, projects, skills, socials }) {
               </pre>
             </div>
           ))}
-        </div>
-        <div className="flex-1">
-          <p className="text-xl font-bold text-emerald-500 mb-4">Skills</p>
-          {skills.map((skill, index) => (
-            <p key={index}>{skill}</p>
-          ))}
-        </div>
-      </section>
+        </section>
+        <section className="flex gap-10">
+          <div className="flex-1">
+            <p className="text-xl font-bold text-emerald-500 mb-4">
+              Education
+            </p>
+            {educations?.map((education, index) => (
+              <div key={index} className="group relative">
+                <header className="flex flex-col mb-2">
+                  <p className="font-semibold">{education.educationTitle}</p>{" "}
+                  <div className="opacity-40">
+                    <span>
+                      {education.stDate
+                        ? format(education.stDate, "MMM do, yyyy")
+                        : format(DUMMY_START_DATE, "MMM do, yyyy")}
+                    </span>{" "}
+                    -{" "}
+                    <span>
+                      {education.enDate
+                        ? format(education.enDate, "MMM do, yyyy")
+                        : "Present"}
+                    </span>
+                  </div>
+                </header>
+              </div>
+            ))}
+            <div className="mt-10">
+              <p className="text-xl font-bold text-emerald-500 mb-4">Skills</p>
+              {skills.map((skill, index) => (
+                <p key={index}>{skill}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

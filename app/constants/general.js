@@ -26,6 +26,13 @@ export const MAP_STATE_TO_TYPE = {
       },
     ],
     skills: ["Remix", "Shadcn/ui"],
+    education: [
+      {
+        educationTitle: "Koya University - Software Engineering",
+        stDate: null,
+        enDate: null,
+      },
+    ],
   },
   RESET: {
     userDetails: {
@@ -55,3 +62,5 @@ export const MAP_STATE_TO_TYPE = {
 
 export const INITIAL_TEMPLATE = "INITIAL_TEMPLATE";
 export const MODERN_TEMPLATE = "MODERN_TEMPLATE";
+
+export const DUMMY_START_DATE = new Date("January 02, 2020");
