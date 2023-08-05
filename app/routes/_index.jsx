@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
+import { ToastAction } from "~/components/ui/toast";
+import { useToast } from "~/components/ui/use-toast";
 import { ListRestartIcon } from "lucide-react";
 import Projects from "../components/Sections/Projects";
 import Socials from "../components/Sections/Socials";
@@ -26,11 +28,13 @@ export default function Index() {
   const [socials, setSocials] = useState(MAP_STATE_TO_TYPE[INITIAL].socials);
   const [skills, setSkills] = useState(MAP_STATE_TO_TYPE[INITIAL].skills);
 
+  const { toast } = useToast();
+
   console.log("start", startDate, endDate);
 
   return (
     <div className="flex gap-20 p-5 relative">
-      <div className="w-2/5 flex flex-col gap-10">
+      <div className="w-2/5 flex flex-col gap-10 print:hidden">
         <UserDetails
           userDetails={userDetails}
           setUserDetails={setUserDetails}
@@ -55,13 +59,32 @@ export default function Index() {
             setProjects(MAP_STATE_TO_TYPE[RESET].projects);
             setSocials(MAP_STATE_TO_TYPE[RESET].socials);
             setSkills(MAP_STATE_TO_TYPE[RESET].skills);
+
+            toast({
+              title: "Fields have been cleared ✔",
+              description:
+                "If you want to undo the changes simply click on the `Undo` button.",
+              action: (
+                <ToastAction
+                  altText="Undo action"
+                  onClick={() => {
+                    setUserDetails(MAP_STATE_TO_TYPE[INITIAL].userDetails);
+                    setProjects(MAP_STATE_TO_TYPE[INITIAL].projects);
+                    setSocials(MAP_STATE_TO_TYPE[INITIAL].socials);
+                    setSkills(MAP_STATE_TO_TYPE[INITIAL].skills);
+                  }}
+                >
+                  Undo
+                </ToastAction>
+              ),
+            });
           }}
         >
           Reset Fields
           <ListRestartIcon className="mr-2 h-4 w-4" />
         </Button>
       </div>
-      <section className="fixed left-2/4">
+      <section className="fixed left-2/4 w-1/2 print:left-0">
         <div
           data-size="A4"
           className="p-10 flex gap-10 border-black border-2 print:border-none h-[267mm]"
@@ -71,6 +94,7 @@ export default function Index() {
             userDetails={userDetails}
             projects={projects}
             skills={skills}
+            socials={socials}
           />
         </div>
       </section>

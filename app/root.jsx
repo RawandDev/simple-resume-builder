@@ -1,5 +1,6 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import styles from "./tailwind.css";
+import { Toaster } from "~/components/ui/toaster";
 
 import {
   Links,
@@ -29,6 +30,7 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Toaster />
       </body>
     </html>
   );

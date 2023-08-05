@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 import { format } from "date-fns";
 
-function InitialTemplate({ userDetails, projects, skills }) {
+function InitialTemplate({ userDetails, projects, skills, socials }) {
   return (
     <>
       <section className="flex flex-col gap-y-20 flex-1">
@@ -30,12 +30,13 @@ function InitialTemplate({ userDetails, projects, skills }) {
                       }`}
                     >
                       <span>
-                        {project.stDate && format(project.stDate, "PPP")}
+                        {project.stDate &&
+                          format(project.stDate, "MMM do, yyyy")}
                       </span>{" "}
                       -{" "}
                       <span>
                         {project.enDate
-                          ? format(project.enDate, "PPP")
+                          ? format(project.enDate, "MMM do, yyyy")
                           : "Present"}
                       </span>
                     </div>
@@ -53,6 +54,19 @@ function InitialTemplate({ userDetails, projects, skills }) {
       <section className="flex-1 flex flex-col gap-10">
         <div className="flex flex-col mb-10">
           <Link to={`mailto:${userDetails.email}`}>{userDetails.email}</Link>
+        </div>
+        <div className="flex flex-col">
+          <p className="uppercase opacity-75 text-lg font-semibold">Socials</p>
+          {socials.map((social, index) => (
+            <Link
+              to={social.socialLink}
+              target="_blank"
+              rel="noreferrer noopener"
+              key={index}
+            >
+              {social.socialName}
+            </Link>
+          ))}
         </div>
         <div>
           <p className="uppercase opacity-75 text-lg font-semibold">Skills</p>

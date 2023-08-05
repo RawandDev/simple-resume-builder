@@ -31,7 +31,7 @@ function DatePicker({ date, label, setProjects, index }) {
             value={date || ""}
           />
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>{label}</span>}
+          {date ? format(date, "MMM do, yyyy") : <span>{label}</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
