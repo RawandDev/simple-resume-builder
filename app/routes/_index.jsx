@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
 import { ToastAction } from "~/components/ui/toast";
@@ -10,6 +10,7 @@ import Skills from "../components/Sections/Skills";
 import UserDetails from "../components/Sections/UserDetails";
 import InitialTemplate from "../components/Templates/InitialTemplate";
 import { INITIAL, MAP_STATE_TO_TYPE, RESET } from "../constants/general";
+import { useReactToPrint } from "react-to-print";
 
 export const meta = () => {
   return [
@@ -27,10 +28,16 @@ export default function Index() {
   const [projects, setProjects] = useState(MAP_STATE_TO_TYPE[INITIAL].projects);
   const [socials, setSocials] = useState(MAP_STATE_TO_TYPE[INITIAL].socials);
   const [skills, setSkills] = useState(MAP_STATE_TO_TYPE[INITIAL].skills);
+  const templateRef = useRef();
 
   const { toast } = useToast();
 
   console.log("start", startDate, endDate);
+
+  const handlePrint = useReactToPrint({
+    content: () => templateRef.current,
+    documentTitle: `${userDetails.firstName} ${userDetails.lastName} - CV`,
+  });
 
   return (
     <div className="flex gap-20 p-5 relative">
@@ -83,10 +90,18 @@ export default function Index() {
           Reset Fields
           <ListRestartIcon className="mr-2 h-4 w-4" />
         </Button>
+        <Button
+          variant="outline"
+          onClick={() => {
+            handlePrint();
+          }}
+        >
+          Download
+          <ListRestartIcon className="mr-2 h-4 w-4" />
+        </Button>
       </div>
-      <section className="fixed left-2/4 w-1/2 print:left-0">
+      <section className="fixed left-2/4 w-1/2 print:left-0" ref={templateRef}>
         <div
-          data-size="A4"
           className="p-10 flex gap-10 border-black border-2 print:border-none h-[267mm]"
           id="container"
         >

@@ -12,7 +12,7 @@ export const MAP_STATE_TO_TYPE = {
     },
     projects: [
       {
-        projectTitle: "Hello World",
+        projectTitle: "Project title 1",
         projectDescription:
           "A side project to help people create their\nCV with ease. \n - Agile methodology \n - Used Remix + Shadcn ui",
         stDate: null,
@@ -25,7 +25,7 @@ export const MAP_STATE_TO_TYPE = {
         socialLink: "https://github.com/RawandDev",
       },
     ],
-    skills: ["Remix"]
+    skills: ["Remix", "Shadcn/ui"],
   },
   RESET: {
     userDetails: {

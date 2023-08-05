@@ -4,7 +4,7 @@ import { format } from "date-fns";
 function InitialTemplate({ userDetails, projects, skills, socials }) {
   return (
     <>
-      <section className="flex flex-col gap-y-20 flex-1">
+      <section className="flex flex-col gap-y-20 flex-1 flex-wrap">
         <div className="flex flex-col">
           <p className="text-2xl font-semibold">
             {userDetails.firstName} {userDetails.lastName}
@@ -51,7 +51,7 @@ function InitialTemplate({ userDetails, projects, skills, socials }) {
           </div>
         </div>
       </section>
-      <section className="flex-1 flex flex-col gap-10">
+      <section className="flex-1 flex flex-col gap-10 ms-2 flex-wrap">
         <div className="flex flex-col mb-10">
           <Link to={`mailto:${userDetails.email}`}>{userDetails.email}</Link>
         </div>
