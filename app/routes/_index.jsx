@@ -11,6 +11,7 @@ import UserDetails from "../components/Sections/UserDetails";
 import InitialTemplate from "../components/Templates/InitialTemplate";
 import { INITIAL, MAP_STATE_TO_TYPE, RESET } from "../constants/general";
 import { useReactToPrint } from "react-to-print";
+import ModernTemplate from "../components/Templates/ModernTemplate";
 
 export const meta = () => {
   return [
@@ -100,12 +101,21 @@ export default function Index() {
           <ListRestartIcon className="mr-2 h-4 w-4" />
         </Button>
       </div>
-      <section className="fixed left-2/4 w-1/2 print:left-0" ref={templateRef}>
+      <section
+        className="fixed left-2/4 w-1/2 print:left-0 print:w-full"
+        ref={templateRef}
+      >
         <div
-          className="p-10 flex gap-10 border-black border-2 print:border-none h-[267mm]"
+          className="border-black border-2 print:border-none h-[267mm]"
           id="container"
         >
-          <InitialTemplate
+          {/* <InitialTemplate
+            userDetails={userDetails}
+            projects={projects}
+            skills={skills}
+            socials={socials}
+          /> */}
+          <ModernTemplate
             userDetails={userDetails}
             projects={projects}
             skills={skills}

@@ -3,7 +3,7 @@ import { format } from "date-fns";
 
 function InitialTemplate({ userDetails, projects, skills, socials }) {
   return (
-    <>
+    <div className="p-10 flex gap-10">
       <section className="flex flex-col gap-y-20 flex-1 flex-wrap">
         <div className="flex flex-col">
           <p className="text-2xl font-semibold">
@@ -42,7 +42,7 @@ function InitialTemplate({ userDetails, projects, skills, socials }) {
                     </div>
                     <p className="font-semibold">{project.projectTitle}</p>{" "}
                   </header>
-                  <pre className="w-full overflow-hidden resize-none mb-4 max-w-sm font-[inherit]">
+                  <pre className="w-full overflow-hidden resize-none mb-4 max-w-sm font-[inherit] whitespace-break-spaces">
                     {project.projectDescription}
                   </pre>
                 </div>
@@ -80,7 +80,7 @@ function InitialTemplate({ userDetails, projects, skills, socials }) {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

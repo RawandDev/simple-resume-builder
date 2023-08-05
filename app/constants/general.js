@@ -12,7 +12,7 @@ export const MAP_STATE_TO_TYPE = {
     },
     projects: [
       {
-        projectTitle: "Project title 1",
+        projectTitle: "Project Title/Work Position",
         projectDescription:
           "A side project to help people create their\nCV with ease. \n - Agile methodology \n - Used Remix + Shadcn ui",
         stDate: null,
