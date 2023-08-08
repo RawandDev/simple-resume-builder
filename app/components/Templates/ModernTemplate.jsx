@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import { format } from "date-fns";
 import { DUMMY_START_DATE } from "../../constants/general";
+import PhotoPreview from "../Sections/Photo/PhotoPreview";
 
 function ModernTemplate({
   userDetails,
@@ -8,15 +9,21 @@ function ModernTemplate({
   skills,
   socials,
   educations,
+  selectedImage,
 }) {
   return (
     <>
-      <header className="flex bg-custom-primary bg-opacity-80 p-10 gap-20">
-        <div className="w-4/6 text-custom-a11y">
-          <p className="text-3xl font-bold">
-            {userDetails.firstName} {userDetails.lastName}
-          </p>
-          <p className="text-xl font-bold mb-4">{userDetails.jobTitle}</p>
+      <header className="flex bg-custom-primary bg-opacity-70 p-10 gap-20">
+        <div className="w-4/6 text-custom-a11y flex flex-col gap-4">
+          <div className="flex items-center gap-4">
+            <PhotoPreview selectedImage={selectedImage} />
+            <div>
+              <p className="text-3xl font-bold">
+                {userDetails.firstName} {userDetails.lastName}
+              </p>
+              <p className="text-xl font-bold mb-4">{userDetails.jobTitle}</p>
+            </div>
+          </div>
           <p>{userDetails.bio}</p>
         </div>
         <div className="text-custom-a11y">
