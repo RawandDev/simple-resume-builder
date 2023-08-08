@@ -11,17 +11,15 @@ function ModernTemplate({
 }) {
   return (
     <>
-      <header className="flex bg-emerald-200 p-10 gap-20">
-        <div className="w-4/6">
+      <header className="flex bg-custom-primary bg-opacity-80 p-10 gap-20">
+        <div className="w-4/6 text-custom-a11y">
           <p className="text-3xl font-bold">
             {userDetails.firstName} {userDetails.lastName}
           </p>
-          <p className="text-xl font-bold text-emerald-500 mb-4">
-            {userDetails.jobTitle}
-          </p>
+          <p className="text-xl font-bold mb-4">{userDetails.jobTitle}</p>
           <p>{userDetails.bio}</p>
         </div>
-        <div>
+        <div className="text-custom-a11y">
           <p>{userDetails.email}</p>
           {socials.map((social, index) => (
             <Link
@@ -38,7 +36,7 @@ function ModernTemplate({
       </header>
       <div className="p-10 flex gap-10">
         <section className="flex-1">
-          <p className="text-xl font-bold text-emerald-500 mb-4">
+          <p className="text-xl font-bold text-custom-primary mb-4">
             Work Experience
           </p>
           {projects?.map((project, index) => (
@@ -69,7 +67,7 @@ function ModernTemplate({
         </section>
         <section className="flex gap-10">
           <div className="flex-1">
-            <p className="text-xl font-bold text-emerald-500 mb-4">
+            <p className="text-xl font-bold text-custom-primary mb-4">
               Education
             </p>
             {educations?.map((education, index) => (
@@ -93,7 +91,9 @@ function ModernTemplate({
               </div>
             ))}
             <div className="mt-10">
-              <p className="text-xl font-bold text-emerald-500 mb-4">Skills</p>
+              <p className="text-xl font-bold text-custom-primary mb-4">
+                Skills
+              </p>
               {skills.map((skill, index) => (
                 <p key={index}>{skill}</p>
               ))}
