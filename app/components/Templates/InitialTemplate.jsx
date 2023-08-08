@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import { format } from "date-fns";
 import { DUMMY_START_DATE } from "../../constants/general";
+import PhotoPreview from "../Sections/Photo/PhotoPreview";
 
 function InitialTemplate({
   userDetails,
@@ -8,17 +9,21 @@ function InitialTemplate({
   skills,
   socials,
   educations,
+  selectedImage,
 }) {
   return (
     <div className="p-10 flex gap-10">
       <section className="flex flex-col gap-y-20 flex-1 flex-wrap">
         <div className="flex flex-col">
-          <p className="text-2xl font-semibold">
-            {userDetails.firstName} {userDetails.lastName}
-          </p>
-          <p className="text-2xl text-custom-primary font-semibold">
-            {userDetails.jobTitle}
-          </p>
+          <PhotoPreview selectedImage={selectedImage} />
+          <div>
+            <p className="text-2xl font-semibold">
+              {userDetails.firstName} {userDetails.lastName}
+            </p>
+            <p className="text-2xl text-custom-primary font-semibold">
+              {userDetails.jobTitle}
+            </p>
+          </div>
         </div>
         <div>
           <p className="uppercase opacity-75 text-lg font-semibold text-custom-primary">

@@ -40,6 +40,7 @@ export default function Index() {
   );
   const templateRef = useRef();
   const [selectedTemplate, setSelectedTemplate] = useState(INITIAL_TEMPLATE);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const { toast } = useToast();
 
@@ -55,6 +56,7 @@ export default function Index() {
           <UserDetails
             userDetails={userDetails}
             setUserDetails={setUserDetails}
+            setSelectedImage={setSelectedImage}
           />
           <Separator />
           <Projects projects={projects} setProjects={setProjects} />
@@ -124,6 +126,7 @@ export default function Index() {
             skills={skills}
             socials={socials}
             educations={educations}
+            selectedImage={selectedImage}
           />
         </div>
       </section>

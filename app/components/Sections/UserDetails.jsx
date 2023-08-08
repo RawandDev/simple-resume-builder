@@ -1,8 +1,9 @@
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Textarea } from "~/components/ui/textarea";
+import UploadPhoto from "./Photo/UploadPhoto";
 
-function UserDetails({ userDetails, setUserDetails }) {
+function UserDetails({ userDetails, setUserDetails, setSelectedImage }) {
   function handleChangeInput(e) {
     setUserDetails((prev) => ({
       ...prev,
@@ -62,7 +63,7 @@ function UserDetails({ userDetails, setUserDetails }) {
           />
         </div>
       </div>
-      <div className="grid w-full gap-1.5">
+      <div className="grid w-full gap-1">
         <Label htmlFor="bio">Write your bio</Label>
         <Textarea
           placeholder="Hmm, thinking deep? Write about yourself mate!"
@@ -72,6 +73,7 @@ function UserDetails({ userDetails, setUserDetails }) {
           value={userDetails.bio}
         />
       </div>
+      <UploadPhoto setSelectedImage={setSelectedImage} />
     </section>
   );
 }
