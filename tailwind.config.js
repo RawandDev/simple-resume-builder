@@ -1,12 +1,14 @@
+import { withOpacity } from "./app/helpers";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
-	],
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -30,7 +32,30 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      textColor: {
+        custom: {
+          primary: withOpacity("--color-primary"),
+          a11y: withOpacity("--color-a11y"),
+        },
+      },
+      backgroundColor: {
+        custom: {
+          primary: withOpacity("--color-primary"),
+          a11y: withOpacity("--color-a11y"),
+        },
+      },
+      ringColor: {
+        custom: {
+          primary: withOpacity("--color-primary"),
+        },
+      },
+      borderColor: {
+        custom: {
+          primary: withOpacity("--color-primary"),
+          a11y: withOpacity("--color-a11y"),
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

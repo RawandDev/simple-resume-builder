@@ -19,6 +19,7 @@ import { Accordion } from "~/components/ui/accordion";
 import TemplateRenderer from "../components/TemplateRender/TemplateRender";
 import TemplatePicker from "../components/TemplatePicker/TemplatePicker";
 import Education from "../components/Sections/Education";
+import ColorPicker from "../components/Sections/ColorPicker";
 
 export const meta = () => {
   return [
@@ -63,6 +64,8 @@ export default function Index() {
           <Skills skills={skills} setSkills={setSkills} />
           <Separator />
           <Education educations={educations} setEducations={setEducations} />
+          <Separator />
+          <ColorPicker />
           <Separator />
         </Accordion>
         <div className="flex gap-2">

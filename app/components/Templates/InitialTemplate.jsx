@@ -16,16 +16,20 @@ function InitialTemplate({
           <p className="text-2xl font-semibold">
             {userDetails.firstName} {userDetails.lastName}
           </p>
-          <p className="text-2xl text-blue-600 font-semibold">
+          <p className="text-2xl text-custom-primary font-semibold">
             {userDetails.jobTitle}
           </p>
         </div>
         <div>
-          <p className="uppercase opacity-75 text-lg font-semibold">Summmary</p>
+          <p className="uppercase opacity-75 text-lg font-semibold text-custom-primary">
+            Summmary
+          </p>
           <p>{userDetails.bio}</p>
         </div>
         <div>
-          <p className="uppercase opacity-75 text-lg font-semibold">Projects</p>
+          <p className="uppercase opacity-75 text-lg font-semibold text-custom-primary">
+            Projects
+          </p>
           <div className="flex flex-col gap-5">
             <div>
               {projects?.map((project, index) => (
@@ -60,7 +64,9 @@ function InitialTemplate({
           <Link to={`mailto:${userDetails.email}`}>{userDetails.email}</Link>
         </div>
         <div className="flex flex-col">
-          <p className="uppercase opacity-75 text-lg font-semibold">Socials</p>
+          <p className="uppercase opacity-75 text-lg font-semibold text-custom-primary">
+            Socials
+          </p>
           {socials.map((social, index) => (
             <Link
               to={social.socialLink}
@@ -73,13 +79,15 @@ function InitialTemplate({
           ))}
         </div>
         <div>
-          <p className="uppercase opacity-75 text-lg font-semibold">Skills</p>
+          <p className="uppercase opacity-75 text-lg font-semibold text-custom-primary">
+            Skills
+          </p>
           {skills.map((skill, index) => (
             <p key={index}>{skill}</p>
           ))}
         </div>
         <div>
-          <p className="uppercase opacity-75 text-lg font-semibold">
+          <p className="uppercase opacity-75 text-lg font-semibold text-custom-primary">
             Education
           </p>
           <div className="flex flex-col gap-5">
