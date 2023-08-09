@@ -14,3 +14,21 @@
     max-width: 210mm;
   }
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(220, 220, 220, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(214, 214, 214);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(210, 210, 210);
+  border-radius: 5px;
+}
