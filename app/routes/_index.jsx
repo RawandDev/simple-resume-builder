@@ -50,8 +50,8 @@ export default function Index() {
   });
 
   return (
-    <div className="flex gap-20 p-5 relative justify-center">
-      <div className="w-2/5 flex flex-col gap-10 print:hidden">
+    <div className="flex gap-20 p-5 relative flex-col lg:flex-row">
+      <div className="lg:w-2/5 flex flex-col gap-10 print:hidden">
         <Accordion type="multiple" className="w-full">
           <UserDetails
             userDetails={userDetails}
@@ -116,7 +116,7 @@ export default function Index() {
       </div>
       <section className="print:left-0 print:w-full" ref={templateRef}>
         <div
-          className="border-black border-2 print:border-none h-[267mm]"
+          className="border-black border-2 print:border-none h-[267mm] lg:fixed max-h-full overflow-y-auto"
           id="container"
         >
           <TemplateRenderer
