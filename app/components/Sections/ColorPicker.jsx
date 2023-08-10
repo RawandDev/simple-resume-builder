@@ -7,7 +7,7 @@ import { Button } from "~/components/ui/button";
 import { COLOR_VARIANTS } from "../../constants/general";
 import { CheckIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getAccessibleColor, getRGBColor } from "../../helpers";
+import { getAccessibleColor, getRGBColor } from "../../lib/helpers";
 
 function ColorPicker() {
   const [selectedColor, setSelectedColor] = useState(COLOR_VARIANTS[0].hexCode);

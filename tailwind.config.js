@@ -1,4 +1,4 @@
-import { withOpacity } from "./app/helpers";
+import { withOpacity } from "./app/lib/helpers";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

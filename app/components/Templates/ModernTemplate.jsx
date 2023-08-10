@@ -42,7 +42,7 @@ function ModernTemplate({
         </div>
       </header>
       <div className="p-10 flex gap-10">
-        <section className="flex-1">
+        <section className="w-3/5">
           <p className="text-xl font-bold text-custom-primary mb-4">
             Work Experience
           </p>
@@ -72,7 +72,7 @@ function ModernTemplate({
             </div>
           ))}
         </section>
-        <section className="flex gap-10">
+        <section className="flex gap-10 w-2/5">
           <div className="flex-1">
             <p className="text-xl font-bold text-custom-primary mb-4">
               Education

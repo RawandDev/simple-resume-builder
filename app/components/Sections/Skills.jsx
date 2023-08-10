@@ -1,4 +1,3 @@
-import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import {
   AccordionContent,
@@ -7,6 +6,7 @@ import {
 } from "~/components/ui/accordion";
 
 import { PlusCircle, TrashIcon } from "lucide-react";
+import CustomInput from "../CustomInput/CustomInput";
 
 function Skills({ skills, setSkills }) {
   const handleAddSkill = () => {
@@ -40,13 +40,12 @@ function Skills({ skills, setSkills }) {
           {skills.map((skill, index) => {
             return (
               <div key={index} className="grid w-full gap-1">
-                <Input
+                <CustomInput
                   type="text"
-                  placeholder={skill}
-                  id="skill"
+                  onChangeHandler={(e) => handleChangeInput(e, index)}
+                  id={`skill-${index}`}
                   name="skill"
-                  onChange={(e) => handleChangeInput(e, index)}
-                  value={skill}
+                  placeholder={skill}
                 />
                 <Button
                   variant="destructive"

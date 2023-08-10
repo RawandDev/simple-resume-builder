@@ -1,9 +1,7 @@
 import { useRef, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
-import { ToastAction } from "~/components/ui/toast";
-import { useToast } from "~/components/ui/use-toast";
-import { DownloadIcon, ListRestartIcon } from "lucide-react";
+import { DownloadIcon } from "lucide-react";
 import Projects from "../components/Sections/Projects";
 import Socials from "../components/Sections/Socials";
 import Skills from "../components/Sections/Skills";
@@ -12,7 +10,6 @@ import {
   INITIAL,
   INITIAL_TEMPLATE,
   MAP_STATE_TO_TYPE,
-  RESET,
 } from "../constants/general";
 import { useReactToPrint } from "react-to-print";
 import { Accordion } from "~/components/ui/accordion";
@@ -36,13 +33,11 @@ export default function Index() {
   const [socials, setSocials] = useState(MAP_STATE_TO_TYPE[INITIAL].socials);
   const [skills, setSkills] = useState(MAP_STATE_TO_TYPE[INITIAL].skills);
   const [educations, setEducations] = useState(
-    MAP_STATE_TO_TYPE[INITIAL].education
+    MAP_STATE_TO_TYPE[INITIAL].educations
   );
   const templateRef = useRef();
   const [selectedTemplate, setSelectedTemplate] = useState(INITIAL_TEMPLATE);
   const [selectedImage, setSelectedImage] = useState(null);
-
-  const { toast } = useToast();
 
   const handlePrint = useReactToPrint({
     content: () => templateRef.current,
@@ -74,37 +69,6 @@ export default function Index() {
           <Button
             variant="outline"
             onClick={() => {
-              setUserDetails(MAP_STATE_TO_TYPE[RESET].userDetails);
-              setProjects(MAP_STATE_TO_TYPE[RESET].projects);
-              setSocials(MAP_STATE_TO_TYPE[RESET].socials);
-              setSkills(MAP_STATE_TO_TYPE[RESET].skills);
-
-              toast({
-                title: "Fields have been cleared ✔",
-                description:
-                  "If you want to undo the changes to initial state simply click on the `Undo` button.",
-                action: (
-                  <ToastAction
-                    altText="Undo action"
-                    onClick={() => {
-                      setUserDetails(MAP_STATE_TO_TYPE[INITIAL].userDetails);
-                      setProjects(MAP_STATE_TO_TYPE[INITIAL].projects);
-                      setSocials(MAP_STATE_TO_TYPE[INITIAL].socials);
-                      setSkills(MAP_STATE_TO_TYPE[INITIAL].skills);
-                    }}
-                  >
-                    Undo
-                  </ToastAction>
-                ),
-              });
-            }}
-          >
-            Reset Fields
-            <ListRestartIcon className="ms-2 h-4 w-4" />
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => {
               handlePrint();
             }}
           >
@@ -116,7 +80,7 @@ export default function Index() {
       </div>
       <section className="print:left-0 print:w-full" ref={templateRef}>
         <div
-          className="border-black border-2 print:border-none h-[267mm] lg:fixed max-h-full overflow-y-auto"
+          className="border-black border-2 print:border-none h-[267mm] lg:fixed max-h-full overflow-y-auto w-full"
           id="container"
         >
           <TemplateRenderer
