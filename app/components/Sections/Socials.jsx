@@ -1,4 +1,3 @@
-import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import {
   AccordionContent,
@@ -7,6 +6,8 @@ import {
 } from "~/components/ui/accordion";
 
 import { PlusCircle, TrashIcon } from "lucide-react";
+import CustomInput from "../CustomInput/CustomInput";
+
 function Socials({ socials, setSocials }) {
   const handleAddSocial = () => {
     setSocials((prevSocials) => [
@@ -48,24 +49,22 @@ function Socials({ socials, setSocials }) {
           {socials.map((social, index) => {
             return (
               <div key={index} className="flex gap-5">
-                <div className="flex flex-col gap-1 w-full">
-                  <Input
+                <div className="w-1/3">
+                  <CustomInput
                     type="text"
-                    placeholder="Social Name"
-                    name="socialName"
+                    onChangeHandler={handleChangeInput}
                     id={index}
-                    onChange={(e) => handleChangeInput(e, index)}
-                    value={social.socialName}
+                    name="socialName"
+                    placeholder={social.socialName}
                   />
                 </div>
                 <div className="flex flex-col gap-1 w-full">
-                  <Input
+                  <CustomInput
                     type="text"
-                    placeholder="Social Link"
-                    name="socialLink"
+                    onChangeHandler={handleChangeInput}
                     id={index}
-                    onChange={(e) => handleChangeInput(e, index)}
-                    value={social.socialLink}
+                    name="socialLink"
+                    placeholder={social.socialLink}
                   />
                   <Button
                     variant="destructive"

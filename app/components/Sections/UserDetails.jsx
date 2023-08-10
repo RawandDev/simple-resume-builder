@@ -1,7 +1,5 @@
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
-import { Textarea } from "~/components/ui/textarea";
 import UploadPhoto from "./Photo/UploadPhoto";
+import CustomInput from "../CustomInput/CustomInput";
 
 function UserDetails({ userDetails, setUserDetails, setSelectedImage }) {
   function handleChangeInput(e) {
@@ -14,65 +12,62 @@ function UserDetails({ userDetails, setUserDetails, setSelectedImage }) {
   return (
     <section className="flex gap-4 flex-col">
       <div className="flex gap-5">
-        <div className="flex flex-col gap-1 w-full">
-          <Label htmlFor="firstName">First Name</Label>
-          <Input
-            type="text"
-            placeholder="First Name"
-            name="firstName"
-            id="firstName"
-            onChange={(e) => handleChangeInput(e)}
-            value={userDetails.firstName}
-          />
-        </div>
-        <div className="flex flex-col gap-1 w-full">
-          <Label htmlFor="lastName">Last Name</Label>
-          <Input
-            type="text"
-            placeholder="Last Name"
-            name="lastName"
-            id="lastName"
-            onChange={(e) => handleChangeInput(e)}
-            value={userDetails.lastName}
-          />
-        </div>
-      </div>
-      <div>
-        <div className="grid w-full gap-1">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="email"
-            placeholder="Email"
-            id="email"
-            name="email"
-            onChange={(e) => handleChangeInput(e)}
-            value={userDetails.email}
-          />
-        </div>
-      </div>
-      <div>
-        <div className="grid w-full gap-1">
-          <Label htmlFor="jobTitle">Job Title</Label>
-          <Input
-            type="text"
-            placeholder="Job Title"
-            id="jobTitle"
-            name="jobTitle"
-            onChange={(e) => handleChangeInput(e)}
-            value={userDetails.jobTitle}
-          />
-        </div>
-      </div>
-      <div className="grid w-full gap-1">
-        <Label htmlFor="bio">Write your bio</Label>
-        <Textarea
-          placeholder="Hmm, thinking deep? Write about yourself mate!"
-          id="bio"
-          name="bio"
-          onChange={(e) => handleChangeInput(e)}
-          value={userDetails.bio}
+        <CustomInput
+          type="text"
+          onChangeHandler={handleChangeInput}
+          label={{
+            htmlFor: "firstName",
+            text: "First Name",
+          }}
+          id="firstName"
+          name="firstName"
+          placeholder={userDetails.firstName}
+        />
+        <CustomInput
+          type="text"
+          onChangeHandler={handleChangeInput}
+          label={{
+            htmlFor: "lastName",
+            text: "Last Name",
+          }}
+          id="lastName"
+          name="lastName"
+          placeholder={userDetails.lastName}
         />
       </div>
+      <CustomInput
+        type="email"
+        onChangeHandler={handleChangeInput}
+        label={{
+          htmlFor: "email",
+          text: "Email",
+        }}
+        id="email"
+        name="email"
+        placeholder={userDetails.email}
+      />
+      <CustomInput
+        type="text"
+        onChangeHandler={handleChangeInput}
+        label={{
+          htmlFor: "jobTitle",
+          text: "Job Title",
+        }}
+        id="jobTitle"
+        name="jobTitle"
+        placeholder={userDetails.jobTitle}
+      />
+      <CustomInput
+        type="textarea"
+        onChangeHandler={handleChangeInput}
+        label={{
+          htmlFor: "jobTitle",
+          text: "Write your bio",
+        }}
+        id="bio"
+        name="bio"
+        placeholder={userDetails.bio}
+      />
       <UploadPhoto setSelectedImage={setSelectedImage} />
     </section>
   );

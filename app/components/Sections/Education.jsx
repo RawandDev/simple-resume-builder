@@ -1,5 +1,3 @@
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
 import { Button } from "~/components/ui/button";
 import {
   AccordionContent,
@@ -9,6 +7,7 @@ import {
 import { Fragment } from "react";
 import DatePicker from "../DatePicker/DatePicker";
 import { PlusCircle, TrashIcon } from "lucide-react";
+import CustomInput from "../CustomInput/CustomInput";
 
 function Education({ educations, setEducations }) {
   const addEducation = () => {
@@ -51,22 +50,17 @@ function Education({ educations, setEducations }) {
           {educations.map((education, index) => {
             return (
               <Fragment key={index}>
-                <div className="grid w-full gap-1 transition-all ease-in duration-1000">
-                  <Label
-                    className="flex justify-between items-end"
-                    htmlFor={index}
-                  >
-                    Degree
-                  </Label>
-                  <Input
-                    type="text"
-                    placeholder="title eeee"
-                    id={index}
-                    name="educationTitle"
-                    onChange={(e) => handleChangeInput(e, index)}
-                    value={education.educationTitle}
-                  />
-                </div>
+                <CustomInput
+                  type="email"
+                  onChangeHandler={(e) => handleChangeInput(e, index)}
+                  label={{
+                    htmlFor: `education-${index}`,
+                    text: "Degree",
+                  }}
+                  id={`education-${index}`}
+                  name="educationTitle"
+                  placeholder={education.educationTitle}
+                />
                 <div className="flex gap-5 items-center">
                   <DatePicker
                     date={education.stDate}
