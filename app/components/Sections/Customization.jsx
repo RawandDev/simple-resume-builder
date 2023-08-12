@@ -11,8 +11,14 @@ import {
 import { SettingsIcon } from "lucide-react";
 import ColorPicker from "./ColorPicker";
 import TemplatePicker from "../TemplatePicker/TemplatePicker";
+import Border from "./Photo/Border";
 
-function Customization({ selectedTemplate, setSelectedTemplate }) {
+function Customization({
+  selectedTemplate,
+  setSelectedTemplate,
+  border,
+  setBorder,
+}) {
   const [selectedColor, setSelectedColor] = useState(COLOR_VARIANTS[0].hexCode);
 
   const primaryColor = getRGBColor(selectedColor, "primary");
@@ -28,6 +34,10 @@ function Customization({ selectedTemplate, setSelectedTemplate }) {
 
     return () => document.head.removeChild(styleTag);
   }, [a11yColor, primaryColor]);
+
+  const handleChangeBorder = (value) => {
+    setBorder(...value);
+  };
 
   return (
     <Popover>
@@ -54,6 +64,7 @@ function Customization({ selectedTemplate, setSelectedTemplate }) {
               selectedTemplate={selectedTemplate}
               setSelectedTemplate={setSelectedTemplate}
             />
+            <Border border={border} onChangeHandler={handleChangeBorder} />
           </div>
         </div>
       </PopoverContent>

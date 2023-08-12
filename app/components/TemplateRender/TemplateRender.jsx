@@ -17,6 +17,7 @@ function TemplateRenderer({
   educations,
   selectedImage,
   templateRef,
+  border,
 }) {
   const TemplateComponent =
     MAP_TEMPLATE_KEYS_TO_JSX[selectedTemplate].component;
@@ -31,6 +32,7 @@ function TemplateRenderer({
           socials={socials}
           educations={educations}
           selectedImage={selectedImage}
+          border={border}
         />
       )}
     </div>

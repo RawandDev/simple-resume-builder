@@ -11,13 +11,14 @@ function CalmTemplate({
   socials,
   educations,
   selectedImage,
+  border
 }) {
   return (
     <div className="p-5">
       <header className="grid grid-cols-1 items-center self-center content-center">
         <div className="flex my-0 mx-auto gap-4 flex-col">
           <div className="flex items-end gap-2">
-            <PhotoPreview selectedImage={selectedImage} />
+            <PhotoPreview selectedImage={selectedImage} border={border} />
             <div className="flex flex-col">
               <p className="text-3xl font-bold text-custom-primary">
                 {userDetails.firstName} {userDetails.lastName}
