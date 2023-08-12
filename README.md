@@ -1,9 +1,20 @@
 # Welcome to the resume builder
 
-Simple yet elegant CV/Resume builder. Build with Remix + Shadcn/ui + Tailwindcss. Build within 2 days, the project needs  
-a bit refactoring and some new features will be released when I have time.
+Simple yet elegant CV/Resume builder. Built with Remix + Shadcn/ui + Tailwindcss.
 
 Check the website here: https://simple-resume-builder.vercel.app
+
+
+## Demo
+
+Here is a quick demo about the application.
+
+
+https://github.com/RawandDev/simple-resume-builder/assets/82733587/61f41ae6-eef9-4dec-9719-47a6534bef18
+
+
+
+
 
 ## Development
 
