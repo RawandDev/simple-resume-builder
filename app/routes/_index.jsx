@@ -66,7 +66,10 @@ export default function Index() {
           <Education educations={educations} setEducations={setEducations} />
           <Separator />
         </Accordion>
-        <Customization setSelectedTemplate={setSelectedTemplate} />
+        <Customization
+          selectedTemplate={selectedTemplate}
+          setSelectedTemplate={setSelectedTemplate}
+        />
         <div className="flex gap-2">
           <Button
             variant="outline"

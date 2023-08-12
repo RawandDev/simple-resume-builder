@@ -27,7 +27,7 @@ function InitialTemplate({
         </div>
         <div>
           <p className="uppercase opacity-75 text-lg font-semibold text-custom-primary">
-            Summmary
+            Summary
           </p>
           <p>{userDetails.bio}</p>
         </div>
