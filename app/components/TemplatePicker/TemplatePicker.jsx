@@ -5,7 +5,7 @@ import { INITIAL_TEMPLATE, MODERN_TEMPLATE } from "../../constants/general";
 function TemplatePicker({ setSelectedTemplate }) {
   return (
     <div>
-      <p className="flex items-center gap-2 mb-2 text-xl">
+      <p className="flex items-center gap-2 mb-2 text-xl font-semibold">
         Available Templates
         <LayoutTemplateIcon className="mr-2 h-4 w-4" />
       </p>
