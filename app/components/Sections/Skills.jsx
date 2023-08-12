@@ -7,6 +7,7 @@ import {
 
 import { PlusCircle, TrashIcon } from "lucide-react";
 import CustomInput from "../CustomInput/CustomInput";
+import { DUMMY_DATA } from "../../constants/general";
 
 function Skills({ skills, setSkills }) {
   const handleAddSkill = () => {
@@ -45,7 +46,8 @@ function Skills({ skills, setSkills }) {
                   onChangeHandler={(e) => handleChangeInput(e, index)}
                   id={`skill-${index}`}
                   name="skill"
-                  placeholder={skill}
+                  placeholder={DUMMY_DATA.skill[index]}
+                  value={skill}
                 />
                 <Button
                   variant="destructive"

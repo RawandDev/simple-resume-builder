@@ -1,15 +1,18 @@
 import { useRef, useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
-import { DownloadIcon } from "lucide-react";
+import { DownloadIcon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
 import Projects from "../components/Sections/Projects";
 import Socials from "../components/Sections/Socials";
 import Skills from "../components/Sections/Skills";
 import UserDetails from "../components/Sections/UserDetails";
 import {
   INITIAL,
+  INITIAL_SCALE,
   INITIAL_TEMPLATE,
+  MAP_SCALE_VALUES_TO_TAILWIND_STYLE,
   MAP_STATE_TO_TYPE,
+  SCALE_VALUES,
 } from "../constants/general";
 import { useReactToPrint } from "react-to-print";
 import { Accordion } from "~/components/ui/accordion";
@@ -17,6 +20,7 @@ import TemplateRenderer from "../components/TemplateRender/TemplateRender";
 import TemplatePicker from "../components/TemplatePicker/TemplatePicker";
 import Education from "../components/Sections/Education";
 import ColorPicker from "../components/Sections/ColorPicker";
+import useZoom from "../hooks/useZoom";
 
 export const meta = () => {
   return [
@@ -35,9 +39,10 @@ export default function Index() {
   const [educations, setEducations] = useState(
     MAP_STATE_TO_TYPE[INITIAL].educations
   );
-  const templateRef = useRef();
   const [selectedTemplate, setSelectedTemplate] = useState(INITIAL_TEMPLATE);
   const [selectedImage, setSelectedImage] = useState(null);
+  const { zoom, handleZoomIn, handleZoomOut } = useZoom(INITIAL_SCALE);
+  const templateRef = useRef();
 
   const handlePrint = useReactToPrint({
     content: () => templateRef.current,
@@ -75,12 +80,18 @@ export default function Index() {
             Download CV
             <DownloadIcon className="ms-2 h-4 w-4" />
           </Button>
+          <Button variant="outline" onClick={handleZoomIn}>
+            <ZoomInIcon className="h-4 w-4" />
+          </Button>
+          <Button variant="outline" onClick={handleZoomOut}>
+            <ZoomOutIcon className="h-4 w-4" />
+          </Button>
         </div>
         <TemplatePicker setSelectedTemplate={setSelectedTemplate} />
       </div>
-      <section className="print:left-0 print:w-full" ref={templateRef}>
+      <section className="print:left-0 print:w-full">
         <div
-          className="border-black border-2 print:border-none h-[267mm] lg:fixed max-h-full overflow-y-auto w-full"
+          className={`border-black border-2 print:border-none h-[267mm] lg:fixed lg:-top-24 w-full transform transition-transform duration-300 ${MAP_SCALE_VALUES_TO_TAILWIND_STYLE[zoom]}`}
           id="container"
         >
           <TemplateRenderer
@@ -91,6 +102,7 @@ export default function Index() {
             socials={socials}
             educations={educations}
             selectedImage={selectedImage}
+            templateRef={templateRef}
           />
         </div>
       </section>

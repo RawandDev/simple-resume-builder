@@ -9,6 +9,7 @@ function CustomInput({
   label: { text, htmlFor } = {},
   name,
   id,
+  value,
 }) {
   return (
     <div className="w-full">
@@ -19,6 +20,7 @@ function CustomInput({
           name={name}
           id={id}
           onChange={onChangeHandler}
+          value={value}
         />
       ) : (
         <Input
@@ -27,6 +29,7 @@ function CustomInput({
           name={name}
           id={id}
           onChange={onChangeHandler}
+          value={value}
         />
       )}
     </div>

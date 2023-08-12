@@ -8,13 +8,14 @@ import { Fragment } from "react";
 import DatePicker from "../DatePicker/DatePicker";
 import { PlusCircle, TrashIcon } from "lucide-react";
 import CustomInput from "../CustomInput/CustomInput";
+import { DUMMY_DATA } from "../../constants/general";
 
 function Education({ educations, setEducations }) {
   const addEducation = () => {
     setEducations((prevEducations) => [
       ...prevEducations,
       {
-        educationTitle: "New Education",
+        educationTitle: "",
         stDate: "",
         enDate: "",
       },
@@ -59,7 +60,8 @@ function Education({ educations, setEducations }) {
                   }}
                   id={`education-${index}`}
                   name="educationTitle"
-                  placeholder={education.educationTitle}
+                  placeholder={DUMMY_DATA.educationTitle}
+                  value={education.educationTitle}
                 />
                 <div className="flex gap-5 items-center">
                   <DatePicker

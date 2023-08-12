@@ -14,11 +14,12 @@ function TemplateRenderer({
   socials,
   educations,
   selectedImage,
+  templateRef,
 }) {
   const TemplateComponent = MAP_TEMPLATES_TO_JSX[selectedTemplate];
 
   return (
-    <div>
+    <div ref={templateRef}>
       {TemplateComponent && (
         <TemplateComponent
           userDetails={userDetails}
