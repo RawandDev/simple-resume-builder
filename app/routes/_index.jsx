@@ -12,15 +12,13 @@ import {
   INITIAL_TEMPLATE,
   MAP_SCALE_VALUES_TO_TAILWIND_STYLE,
   MAP_STATE_TO_TYPE,
-  SCALE_VALUES,
 } from "../constants/general";
 import { useReactToPrint } from "react-to-print";
 import { Accordion } from "~/components/ui/accordion";
 import TemplateRenderer from "../components/TemplateRender/TemplateRender";
-import TemplatePicker from "../components/TemplatePicker/TemplatePicker";
 import Education from "../components/Sections/Education";
-import ColorPicker from "../components/Sections/ColorPicker";
 import useZoom from "../hooks/useZoom";
+import Customization from "../components/Sections/Customization";
 
 export const meta = () => {
   return [
@@ -67,9 +65,8 @@ export default function Index() {
           <Separator />
           <Education educations={educations} setEducations={setEducations} />
           <Separator />
-          <ColorPicker />
-          <Separator />
         </Accordion>
+        <Customization setSelectedTemplate={setSelectedTemplate} />
         <div className="flex gap-2">
           <Button
             variant="outline"
@@ -87,7 +84,6 @@ export default function Index() {
             <ZoomOutIcon className="h-4 w-4" />
           </Button>
         </div>
-        <TemplatePicker setSelectedTemplate={setSelectedTemplate} />
       </div>
       <section className="print:left-0 print:w-full">
         <div
