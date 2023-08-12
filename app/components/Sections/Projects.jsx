@@ -57,7 +57,6 @@ function Projects({ projects, setProjects }) {
         </AccordionTrigger>
         <AccordionContent className="p-1">
           {projects.map((project, index) => {
-            console.log(project);
             return (
               <Fragment key={index}>
                 <CustomInput

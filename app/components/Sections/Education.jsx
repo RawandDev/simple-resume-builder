@@ -15,7 +15,7 @@ function Education({ educations, setEducations }) {
     setEducations((prevEducations) => [
       ...prevEducations,
       {
-        educationTitle: "New Education",
+        educationTitle: "",
         stDate: "",
         enDate: "",
       },
