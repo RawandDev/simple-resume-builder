@@ -12,7 +12,7 @@ import { SettingsIcon } from "lucide-react";
 import ColorPicker from "./ColorPicker";
 import TemplatePicker from "../TemplatePicker/TemplatePicker";
 
-function Customization({ setSelectedTemplate }) {
+function Customization({ selectedTemplate, setSelectedTemplate }) {
   const [selectedColor, setSelectedColor] = useState(COLOR_VARIANTS[0].hexCode);
 
   const primaryColor = getRGBColor(selectedColor, "primary");
@@ -37,7 +37,7 @@ function Customization({ setSelectedTemplate }) {
           <SettingsIcon className="ms-2 h-4 w-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80">
+      <PopoverContent className="w-3/4">
         <div className="grid gap-8">
           <div className="space-y-2">
             <h4 className="font-medium leading-none text-xl">Customization</h4>
@@ -50,7 +50,10 @@ function Customization({ setSelectedTemplate }) {
               selectedColor={selectedColor}
               setSelectedColor={setSelectedColor}
             />
-            <TemplatePicker setSelectedTemplate={setSelectedTemplate} />
+            <TemplatePicker
+              selectedTemplate={selectedTemplate}
+              setSelectedTemplate={setSelectedTemplate}
+            />
           </div>
         </div>
       </PopoverContent>

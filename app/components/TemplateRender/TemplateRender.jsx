@@ -1,9 +1,11 @@
+import CalmTemplate from "../Templates/CalmTemplate";
 import InitialTemplate from "../Templates/InitialTemplate";
 import ModernTemplate from "../Templates/ModernTemplate";
 
-const MAP_TEMPLATES_TO_JSX = {
-  INITIAL_TEMPLATE: InitialTemplate,
-  MODERN_TEMPLATE: ModernTemplate,
+export const MAP_TEMPLATE_KEYS_TO_JSX = {
+  INITIAL_TEMPLATE: { component: InitialTemplate, name: "Classic" },
+  MODERN_TEMPLATE: { component: ModernTemplate, name: "Modern" },
+  CALM_TEMPLATE: { component: CalmTemplate, name: "Calm" },
 };
 
 function TemplateRenderer({
@@ -16,7 +18,8 @@ function TemplateRenderer({
   selectedImage,
   templateRef,
 }) {
-  const TemplateComponent = MAP_TEMPLATES_TO_JSX[selectedTemplate];
+  const TemplateComponent =
+    MAP_TEMPLATE_KEYS_TO_JSX[selectedTemplate].component;
 
   return (
     <div ref={templateRef}>
