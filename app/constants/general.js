@@ -11,23 +11,22 @@ export const MAP_STATE_TO_TYPE = {
     },
     projects: [
       {
-        projectTitle: "Project Title/Work Position",
-        projectDescription:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n \t-sed do eiusmod tempor incididunt. \n \t-ut labore et dolore magna aliqua.",
+        projectTitle: "",
+        projectDescription: "",
         stDate: null,
         enDate: null,
       },
     ],
     socials: [
       {
-        socialName: "GitHub",
-        socialLink: "https://github.com/RawandDev",
+        socialName: "",
+        socialLink: "",
       },
     ],
-    skills: ["Word", "Excel"],
+    skills: [""],
     educations: [
       {
-        educationTitle: "Bachelor of Software Engineering",
+        educationTitle: "",
         stDate: null,
         enDate: null,
       },
@@ -55,3 +54,30 @@ export const COLOR_VARIANTS = [
   { hexCode: "#e98a15", twColor: "bg-[#e98a15]" },
   { hexCode: "#ff66b3", twColor: "bg-[#ff66b3]" },
 ];
+
+export const DUMMY_DATA = {
+  educationTitle: "Bachelor of Software Engineering",
+  projectTitle: "Project Title",
+  projectDescription:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n \t-sed do eiusmod tempor incididunt. \n \t-ut labore et dolore magna aliqua.",
+  skill: ["JavaScript", "Reactjs"],
+  socialName: "GitHub",
+  socialLink: "https://github.com/RawandDev",
+};
+
+export const MAP_SCALE_VALUES_TO_TAILWIND_STYLE = {
+  50: "scale-50",
+  60: "scale-60",
+  70: "scale-70",
+  80: "scale-80",
+  90: "scale-90",
+  100: "scale-100",
+  110: "scale-110",
+  120: "scale-120",
+};
+
+export const SCALE_VALUES = Object.keys(MAP_SCALE_VALUES_TO_TAILWIND_STYLE).map(
+  Number
+);
+
+export const INITIAL_SCALE = 70;

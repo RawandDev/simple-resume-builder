@@ -9,16 +9,22 @@ import {
   AccordionTrigger,
 } from "~/components/ui/accordion";
 import CustomInput from "../CustomInput/CustomInput";
+import {
+  DUMMY_DATA,
+  INITIAL,
+  MAP_STATE_TO_TYPE,
+} from "../../constants/general";
 
 function Projects({ projects, setProjects }) {
   const addProject = () => {
     setProjects((prevProjects) => [
       ...prevProjects,
       {
-        projectTitle: "New Project/Work",
+        projectTitle: MAP_STATE_TO_TYPE[INITIAL].projects[0].projectTitle,
         stDate: "",
         enDate: "",
-        projectDescription: "Some description...",
+        projectDescription:
+          MAP_STATE_TO_TYPE[INITIAL].projects[0].projectDescription,
       },
     ]);
   };
@@ -51,6 +57,7 @@ function Projects({ projects, setProjects }) {
         </AccordionTrigger>
         <AccordionContent className="p-1">
           {projects.map((project, index) => {
+            console.log(project);
             return (
               <Fragment key={index}>
                 <CustomInput
@@ -62,7 +69,8 @@ function Projects({ projects, setProjects }) {
                   }}
                   id={index}
                   name="projectTitle"
-                  placeholder={project.projectTitle}
+                  placeholder={DUMMY_DATA.projectTitle}
+                  value={project.projectTitle}
                 />
                 <div className="flex gap-5 items-center">
                   <DatePicker
@@ -88,7 +96,8 @@ function Projects({ projects, setProjects }) {
                   }}
                   id={`description-${index}`}
                   name="projectDescription"
-                  placeholder={project.projectDescription}
+                  placeholder={DUMMY_DATA.projectDescription}
+                  value={project.projectDescription}
                 />
                 <Button
                   variant="destructive"

@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 import { format } from "date-fns";
-import { DUMMY_START_DATE } from "../../constants/general";
+import { DUMMY_DATA, DUMMY_START_DATE } from "../../constants/general";
 import PhotoPreview from "../Sections/Photo/PhotoPreview";
 
 function InitialTemplate({
@@ -53,10 +53,13 @@ function InitialTemplate({
                           : "Present"}
                       </span>
                     </div>
-                    <p className="font-semibold">{project.projectTitle}</p>{" "}
+                    <p className="font-semibold">
+                      {project.projectTitle || DUMMY_DATA.projectTitle}
+                    </p>
                   </header>
                   <pre className="w-full overflow-hidden resize-none mb-4 max-w-sm font-[inherit] whitespace-break-spaces">
-                    {project.projectDescription}
+                    {project.projectDescription ||
+                      DUMMY_DATA.projectDescription}
                   </pre>
                 </div>
               ))}
@@ -74,12 +77,12 @@ function InitialTemplate({
           </p>
           {socials.map((social, index) => (
             <Link
-              to={social.socialLink}
+              to={social.socialLink || DUMMY_DATA.socialLink}
               target="_blank"
               rel="noreferrer noopener"
               key={index}
             >
-              {social.socialName}
+              {social.socialName || DUMMY_DATA.socialName}
             </Link>
           ))}
         </div>
@@ -88,7 +91,7 @@ function InitialTemplate({
             Skills
           </p>
           {skills.map((skill, index) => (
-            <p key={index}>{skill}</p>
+            <p key={index}>{skill || DUMMY_DATA.skill[index]}</p>
           ))}
         </div>
         <div>
@@ -99,7 +102,9 @@ function InitialTemplate({
             {educations?.map((education, index) => (
               <div key={index} className="group relative">
                 <header className="flex flex-col">
-                  <p className="font-semibold">{education.educationTitle}</p>{" "}
+                  <p className="font-semibold">
+                    {education.educationTitle || DUMMY_DATA.educationTitle}
+                  </p>{" "}
                   <div className="opacity-40">
                     <span>
                       {education.stDate

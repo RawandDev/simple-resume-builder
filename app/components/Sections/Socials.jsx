@@ -7,6 +7,7 @@ import {
 
 import { PlusCircle, TrashIcon } from "lucide-react";
 import CustomInput from "../CustomInput/CustomInput";
+import { DUMMY_DATA } from "../../constants/general";
 
 function Socials({ socials, setSocials }) {
   const handleAddSocial = () => {
@@ -52,19 +53,21 @@ function Socials({ socials, setSocials }) {
                 <div className="w-1/3">
                   <CustomInput
                     type="text"
-                    onChangeHandler={handleChangeInput}
+                    onChangeHandler={(e) => handleChangeInput(e, index)}
                     id={index}
                     name="socialName"
-                    placeholder={social.socialName}
+                    placeholder={DUMMY_DATA.socialName}
+                    value={social.socialName}
                   />
                 </div>
                 <div className="flex flex-col gap-1 w-full">
                   <CustomInput
                     type="text"
-                    onChangeHandler={handleChangeInput}
+                    onChangeHandler={(e) => handleChangeInput(e, index)}
                     id={index}
                     name="socialLink"
-                    placeholder={social.socialLink}
+                    placeholder={DUMMY_DATA.socialLink}
+                    value={social.socialLink}
                   />
                   <Button
                     variant="destructive"
