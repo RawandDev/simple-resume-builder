@@ -10,12 +10,13 @@ function InitialTemplate({
   socials,
   educations,
   selectedImage,
+  border,
 }) {
   return (
     <div className="p-10 flex gap-10">
       <section className="flex flex-col gap-y-20 flex-1 flex-wrap">
         <div className="flex flex-col">
-          <PhotoPreview selectedImage={selectedImage} />
+          <PhotoPreview selectedImage={selectedImage} border={border} />
           <div>
             <p className="text-2xl font-semibold">
               {userDetails.firstName} {userDetails.lastName}

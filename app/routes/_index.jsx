@@ -40,6 +40,7 @@ export default function Index() {
   const [selectedTemplate, setSelectedTemplate] = useState(INITIAL_TEMPLATE);
   const [selectedImage, setSelectedImage] = useState(null);
   const { zoom, handleZoomIn, handleZoomOut } = useZoom(INITIAL_SCALE);
+  const [border, setBorder] = useState(2);
   const templateRef = useRef();
 
   const handlePrint = useReactToPrint({
@@ -69,6 +70,8 @@ export default function Index() {
         <Customization
           selectedTemplate={selectedTemplate}
           setSelectedTemplate={setSelectedTemplate}
+          border={border}
+          setBorder={setBorder}
         />
         <div className="flex gap-2">
           <Button
@@ -102,6 +105,7 @@ export default function Index() {
             educations={educations}
             selectedImage={selectedImage}
             templateRef={templateRef}
+            border={border}
           />
         </div>
       </section>
